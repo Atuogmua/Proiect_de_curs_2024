@@ -7,7 +7,7 @@
 2. Beloconi Anastasia, SI-232
 3. Toma Augustina, SI-232
 
-### Linkul duce la raport și alte documente legate de proiect care nu pot fi reprezentate pe GitHub
+### Linkul duce la raport și alte documente legate de proiect
 
 |**Descrierea problemei**|Într-un joc de cărți precum BlackJack, este esențial să ne asigurăm că pachetul este amestecat corect și eficient. Este posibil ca metodele tradiționale de amestecare a cărților, atât fizice, cât și digitale, să nu garanteze randomizare uniformă. Unele metode ar putea provoca interferențe sau modele repetitive care ar putea influența în mod nedrept rezultatul jocului.|
 |--------------------|-----------------------------------------------------|
