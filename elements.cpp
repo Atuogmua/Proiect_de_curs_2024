@@ -72,6 +72,19 @@ int Hand::GetTotal() const{
     if(containsAce && total <= 11){
         total += 10; // adaugam doar 10, deaorece asul deja are valoarea de 1
     }
-    
+
     return total;
 };
+
+GenericPlayer::GenericPlayer(const string& name) : m_Name(name){};
+
+GenericPlayer::~GenericPlayer(){};
+
+bool GenericPlayer::IsBusted() const{
+    return (GetTotal() > 21);
+};
+
+void GenericPlayer::Bust() const{
+    cout << m_Name << "busts." << endl;
+};
+

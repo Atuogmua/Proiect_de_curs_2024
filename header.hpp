@@ -30,3 +30,16 @@ class Hand{
     protected:
         vector<Card*> m_Cards;
 };
+
+
+class GenericPlayer : public Hand{
+    friend ostream& operator<<(ostream& os, const GenericPlayer& aGenericPlayer);
+    public:
+        GenericPlayer(const string& name = "");
+        virtual ~GenericPlayer();
+        virtual bool IsHitting() const = 0;//daca merge mai departe jucatorul
+        bool IsBusted() const;// returneaza o valoare daca jucatorul are mai mult de 21 de puncte
+        void Bust() const;
+    protected:
+        string m_Name;
+};
