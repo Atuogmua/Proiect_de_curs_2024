@@ -12,4 +12,9 @@
 |--------------------|-----------------------------------------------------|
 |**Tema**|Implementarea jocului BlackJack. Analiza algoritmului Fisher-Yates|
 |**Scopul**|Căutrea celui mai eficient algoritm de amestecare și analiza empirică a acestuia|
-|**Obiective**|- Compararea eficienței algoritmilor de amestecare - Implementarea algoritmului Fisher-Yates - Dezvoltarea funcționalității de bază a jocului BlackJack - Crearea interfeței pentru utilizator a jocului - Testarea tuturor cazurilor posibile din joc - Analiza empirică a algoritmului Fisher-Yates|
+|**Obiective**|- Compararea eficienței algoritmilor de amestecare |
+|-------------|- Implementarea algoritmului Fisher-Yates|
+|-------------|- Dezvoltarea funcționalității de bază a jocului BlackJack|
+|-------------|- Crearea interfeței pentru utilizator a jocului|
+|-------------|- Testarea tuturor cazurilor posibile din joc|
+|-------------|- Analiza empirică a algoritmului Fisher-Yates|
