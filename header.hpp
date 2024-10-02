@@ -43,3 +43,47 @@ class GenericPlayer : public Hand{
     protected:
         string m_Name;
 };
+
+
+class Player : public GenericPlayer{
+    public:
+        Player(const string& name = "");
+        virtual ~Player();
+        virtual bool IsHitting() const; //daca doreste sa mai extraga o carte
+        void Win() const; //declara ca a castigat
+        void Lose() const; //declara ca a pierdut
+        void Push() const;// egalitate
+};
+
+
+class House : public GenericPlayer{
+    public:
+        House(const string& name = "House");
+        virtual ~House();
+        virtual bool IsHitting() const; //daca doreste sa mai extraga o carte
+        void FlipFirstCard();
+};
+
+
+class Deck : public Hand{
+    public:
+        Deck();
+        virtual ~Deck();
+        void Populate();//creaza un pachet standart de carti
+        void Shuffle(); // amesteca cartile
+        void Deal(Hand& aHand);// imparte cate o carte
+        void AdditionalCards(GenericPlayer& aGenericPlayer);
+};
+
+
+class Game{
+    public:
+        Game(const vector<string>& names);
+        ~Game();
+        void Play();
+    private:
+        Deck m_Deck;
+        House m_House;
+        vector<Player> m_Players;
+};
+
