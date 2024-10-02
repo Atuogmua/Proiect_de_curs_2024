@@ -208,6 +208,87 @@ Game::~Game(){};
 void Game::Play(){
     vector<Player>::iterator pPlayer;
     for(int i = 0; i < 2; i++){  //se imparte cate 2 carti initiale
-        
+        for(pPlayer = m_Players.begin(); pPlayer != m_Players.end(); pPlayer++){
+            m_Deck.Deal(*pPlayer);
+        }
+        m_Deck.Deal(m_House);
     }
-}
+    
+    m_House.FlipFirstCard();//intoarce fata primei carti a dealerului
+
+    for(pPlayer = m_Players.begin(); pPlayer != m_Players.end(); pPlayer++){//deschide cartile tuturor jucatorilor
+        cout << *pPlayer << endl;
+    }
+
+    cout << m_House << endl;
+
+    for(pPlayer = m_Players.begin(); pPlayer != m_Players.end(); pPlayer++){//imparte carti adaugatoare jucatorilor
+        m_Deck.AdditionalCards(*pPlayer);
+    }
+
+    m_House.FlipFirstCard();
+
+    cout << m_House << endl;
+
+    m_Deck.AdditionalCards(m_House);//imparte carti adaugatoare dealerului
+
+    if(m_House.IsBusted()){ //toti care raman, castiga
+        for(pPlayer = m_Players.begin(); pPlayer != m_Players.end(); pPlayer++){
+            if(!(pPlayer->IsBusted())){
+                pPlayer->Win();
+            }
+        }
+    }
+    else{
+        for(pPlayer = m_Players.begin(); pPlayer != m_Players.end(); pPlayer++){// se compara punctajurile
+            if(!(pPlayer->IsBusted())){
+                if(pPlayer->GetTotal() > m_House.GetTotal()){
+                    pPlayer->Win();
+                }
+                else if (pPlayer->GetTotal() < m_House.GetTotal()){
+                    pPlayer->Lose();
+                }
+                else{
+                    pPlayer->Push();
+                }
+            }
+        }
+    }
+
+    for(pPlayer = m_Players.begin(); pPlayer != m_Players.end(); pPlayer++){//eliberare
+        pPlayer->Clear();
+    }
+    m_House.Clear();
+};
+
+
+
+
+ostream& operator<<(ostream& os, const Card& aCard){
+    const string RANKS[] = {"0", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};//incep cu zero aici, deoare cartile incep iteratiile cu 1
+    const string SUITS[] = {"\u2663", "\u2666", "\u2665", "\u2660"};
+    if (aCard.m_IsFaceUp){
+        os << RANKS[aCard.m_Rank] << SUITS[aCard.m_Suit];
+    }
+    else{
+        os << "XX";
+    }
+    return os;
+};
+
+ostream& operator<<(ostream& os, const GenericPlayer& aGenericPlayer){
+    os << aGenericPlayer.m_Name << ":\t";
+    vector<Card*>::const_iterator pCard;
+    if(!aGenericPlayer.m_Cards.empty()){
+        for(pCard = aGenericPlayer.m_Cards.begin(); pCard != aGenericPlayer.m_Cards.end(); pCard++){
+            os << *(*pCard) << "\t";
+        }
+        if(aGenericPlayer.GetTotal() != 0){
+            cout << "(" << aGenericPlayer.GetTotal() << ")";
+        }
+    }
+    else{
+        os << "<empty>";
+    }
+    return os;
+};

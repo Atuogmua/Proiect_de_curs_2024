@@ -87,3 +87,7 @@ class Game{
         vector<Player> m_Players;
 };
 
+
+
+ostream& operator<<(ostream& os, const Card& aCard);
+ostream& operator<<(ostream& os, const GenericPlayer& aGenericPlayer);
