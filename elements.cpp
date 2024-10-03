@@ -266,7 +266,7 @@ void Game::Play(){
 
 ostream& operator<<(ostream& os, const Card& aCard){
     const string RANKS[] = {"0", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};//incep cu zero aici, deoare cartile incep iteratiile cu 1
-    const string SUITS[] = {"\u2663", "\u2666", "\u2665", "\u2660"};
+    const string SUITS[] = {"\u0005", "\u0004", "\u0003", "\u0006"};
     if (aCard.m_IsFaceUp){
         os << RANKS[aCard.m_Rank] << SUITS[aCard.m_Suit];
     }
