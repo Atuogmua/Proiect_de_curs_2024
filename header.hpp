@@ -90,4 +90,4 @@ class Game{
 
 
 ostream& operator<<(ostream& os, const Card& aCard);
-ostream& operator<<(ostream& os, const GenericPlayer& aGenericPlayer);
+ostream& operator<<(ostream& os, const GenericPlayer& aGenericPlay);
